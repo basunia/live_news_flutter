@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mail_automation/utils/random_chars.dart';
 import 'package:mail_tm_api/mail_tm_api.dart';
+import 'package:mail_tm_api/src/model/news.dart';
 
 void main() async {
   final apiClient = MailTmApiClient();
@@ -13,7 +14,23 @@ void main() async {
           appBar: AppBar(
             title: const Text('Mail Automation'),
           ),
-          body: const Text('Mail Automaton'))));
+          body: FutureBuilder<List<News>>(
+            future: apiClient.getLiveNews(),
+            builder: (context, snapshot) {
+              return snapshot.hasData && snapshot.data!.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, i) {
+                        final news = snapshot.data![i];
+                        return ListTile(
+                          dense: true,
+                          title: Text(news.title),
+                          subtitle: Text(news.description),
+                        );
+                      })
+                  : const Center(child: Text('No data found'));
+            },
+          ))));
 
   // final domain = await apiClient.getDomains();
   // print('Domain $domain');

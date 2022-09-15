@@ -8,9 +8,9 @@ class News {
       required this.description,
       this.image,
       this.url,
-      this.publishedDate})
-      : assert(title.isNotEmpty && description.isNotEmpty,
-            'title and description can not be empty');
+      this.publishedDate});
+  // : assert(title.isNotEmpty && description.isNotEmpty,
+  //       'title and description can not be empty');
 
   final String title;
   final String description;
