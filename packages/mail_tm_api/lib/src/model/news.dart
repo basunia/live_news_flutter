@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'news.g.dart';
 
@@ -10,8 +9,9 @@ class News {
       this.image,
       this.url,
       this.publishedDate})
-      : assert(title.isNotEmpty && description.isEmpty,
+      : assert(title.isNotEmpty && description.isNotEmpty,
             'title and description can not be empty');
+
   final String title;
   final String description;
   final String? url;

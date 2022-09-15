@@ -85,10 +85,13 @@ class MailTmApiClient {
   //==========news api=========================//
   static const String apiKey = '51cbced675e27cc5e77152d564190025';
   Future<List<News>> getLiveNews(
-      {String sources = 'bbc', String languages = 'en'}) async {
+      {String sources = 'bbc,cnn', String languages = 'en'}) async {
     try {
-      final response = await _apiClient.post('/token',
-          queryParameters: {"sources": sources, "languages": languages});
+      final response = await dioNews.get('/news', queryParameters: {
+        "access_key": apiKey,
+        "sources": sources,
+        "languages": languages
+      });
 
       if (response.statusCode != 200) {
         throw TokenRequestFailure();
@@ -96,9 +99,8 @@ class MailTmApiClient {
       if ((response.data as Map<String, dynamic>).isEmpty) {
         throw TokenNotFoundFailure();
       }
-      List<News> newsList = response.data['hydra:member']
-          .map<News>((e) => News.fromJson(e))
-          .toList();
+      List<News> newsList =
+          response.data['data'].map<News>((e) => News.fromJson(e)).toList();
 
       return newsList;
     } catch (e) {
@@ -109,6 +111,7 @@ class MailTmApiClient {
     }
   }
 
+  ///====================token=====================///
   Future<String> getToken(
       {required String address, required String password}) async {
     try {
