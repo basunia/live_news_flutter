@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mail_tm_api/src/base_clent.dart';
@@ -29,17 +27,26 @@ class TokenNotFoundFailure implements Exception {
   String toString() => '$runtimeType';
 }
 
+/// Exception thrown when account request fails.
+class AccountRequestFailure implements Exception {}
+
+/// Exception thrown when the account is not found.
+class AccountNotFoundFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
+
 /// Exception thrown when registration process fails.
 class RegistrationRequestFailure implements Exception {
   @override
   String toString() => '$runtimeType';
 }
 
-/// Exception thrown when the provided account info is not found.
-class AccountNotFoundFailure implements Exception {
-  @override
-  String toString() => '$runtimeType';
-}
+// /// Exception thrown when the provided account info is not found.
+// class AccountNotFoundFailure implements Exception {
+//   @override
+//   String toString() => '$runtimeType';
+// }
 
 /// Exception thrown when news request fails.
 class NewsRequestFailure implements Exception {
@@ -87,6 +94,33 @@ class MailTmApiClient {
 
       if (response.statusCode != 201) {
         throw RegistrationRequestFailure();
+      }
+      if ((response.data as Map<String, dynamic>).isEmpty) {
+        throw AccountNotFoundFailure();
+      }
+      Account account = Account.fromJson(response.data);
+
+      return account;
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+      rethrow;
+    }
+  }
+
+  Future<Account> getAccount({
+    required String token,
+  }) async {
+    try {
+      final headers = {'Authorization': 'Bearer $token'};
+      _apiClient.options.headers = headers;
+      final response = await _apiClient.get(
+        '/me',
+      );
+
+      if (response.statusCode != 201) {
+        throw AccountRequestFailure();
       }
       if ((response.data as Map<String, dynamic>).isEmpty) {
         throw AccountNotFoundFailure();

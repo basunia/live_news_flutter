@@ -29,8 +29,28 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  mail_repository:
+    path: packages/mail_repository
   mail_tm_api:
     path: packages/mail_tm_api
+  flutter_bloc: ^8.1.1
+  bloc: ^8.1.0
+  hydrated_bloc: ^8.1.0
+  equatable: ^2.0.0
+  bloc_concurrency: ^0.2.0
+  stream_transform: ^2.0.0
+  internet_connection_checker: ^0.0.1+4
+  connectivity_plus: ^2.3.6+1
+  top_snackbar_flutter: ^2.1.1
+  cached_network_image: ^3.2.1
+  path_provider: ^2.0.8
+  json_annotation: ^4.6.0
+  skeletons: ^0.0.3
+  skeleton_loader: ^2.0.0+4
+  # google_maps_flutter: ^2.2.0
+  # location: ^4.4.0
+  easy_localization: ^3.0.1
+  pull_to_refresh: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
