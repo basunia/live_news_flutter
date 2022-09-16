@@ -42,14 +42,19 @@ class RegistrationRequestFailure implements Exception {
   String toString() => '$runtimeType';
 }
 
-// /// Exception thrown when the provided account info is not found.
-// class AccountNotFoundFailure implements Exception {
-//   @override
-//   String toString() => '$runtimeType';
-// }
+/// Exception thrown when the provided account info is not found.
+class AccountAlreadyExistFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
 
 /// Exception thrown when news request fails.
 class NewsRequestFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
+
+class AccountNotExistFailure implements Exception {
   @override
   String toString() => '$runtimeType';
 }
@@ -101,6 +106,13 @@ class MailTmApiClient {
       Account account = Account.fromJson(response.data);
 
       return account;
+    } on DioError catch (e) {
+      debugPrint('Status code ==> ${e.response?.statusCode}');
+      if (e.response?.statusCode == 422) {
+        throw AccountAlreadyExistFailure();
+      } else {
+        rethrow;
+      }
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
@@ -109,6 +121,38 @@ class MailTmApiClient {
     }
   }
 
+  ///====================token=====================///
+  Future<String> getToken(
+      {required String address, required String password}) async {
+    try {
+      final response = await _apiClient
+          .post('/token', data: {"address": address, "password": password});
+
+      if (response.statusCode != 200) {
+        throw AccountNotExistFailure();
+      }
+      if ((response.data as Map<String, dynamic>).isEmpty) {
+        throw TokenNotFoundFailure();
+      }
+      String token = response.data['token'];
+
+      return token;
+    } on DioError catch (e) {
+      debugPrint('Status code ==> ${e.response?.statusCode}');
+      if (e.response?.statusCode == 401) {
+        throw AccountNotExistFailure();
+      } else {
+        rethrow;
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+      rethrow;
+    }
+  }
+
+  //============get profile info============//
   Future<Account> getAccount({
     required String token,
   }) async {
@@ -119,7 +163,7 @@ class MailTmApiClient {
         '/me',
       );
 
-      if (response.statusCode != 201) {
+      if (response.statusCode != 200) {
         throw AccountRequestFailure();
       }
       if ((response.data as Map<String, dynamic>).isEmpty) {
@@ -148,39 +192,15 @@ class MailTmApiClient {
       });
 
       if (response.statusCode != 200) {
-        throw TokenRequestFailure();
-      }
-      if ((response.data as Map<String, dynamic>).isEmpty) {
-        throw TokenNotFoundFailure();
-      }
-      List<News> newsList =
-          response.data['data'].map<News>((e) => News.fromJson(e)).toList();
-
-      return newsList;
-    } catch (e) {
-      if (kDebugMode) {
-        print(e.toString());
-      }
-      rethrow;
-    }
-  }
-
-  ///====================token=====================///
-  Future<String> getToken(
-      {required String address, required String password}) async {
-    try {
-      final response = await _apiClient
-          .post('/token', data: {"address": address, "password": password});
-
-      if (response.statusCode != 200) {
         throw NewsRequestFailure();
       }
       if ((response.data as Map<String, dynamic>).isEmpty) {
         throw NewsNotFoundFailure();
       }
-      String token = response.data['token'];
+      List<News> newsList =
+          response.data['data'].map<News>((e) => News.fromJson(e)).toList();
 
-      return token;
+      return newsList;
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());

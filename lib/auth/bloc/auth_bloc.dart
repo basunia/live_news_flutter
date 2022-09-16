@@ -19,12 +19,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   _onPageChageRequested(PageChangeRequested event, Emitter<AuthState> emit) =>
       emit(event.requestedPageType.isLoginPage
-          ? state.copyWith(authType: AuthType.login)
-          : state.copyWith(authType: AuthType.signUp));
+          ? state.copyWith(
+              authType: AuthType.login, authStatus: AuthStatus.initial)
+          : state.copyWith(
+              authType: AuthType.signUp, authStatus: AuthStatus.initial));
 
   _onAuthRequested(AuthReguested event, Emitter<AuthState> emit) async {
     try {
       if (event.authType.isLogin) {
+        emit(state.copyWith(
+            authType: AuthType.login, authStatus: AuthStatus.loading));
         final account = await _mailRepository.login(
             username: event.username, password: event.password);
         emit(state.copyWith(
@@ -32,6 +36,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             authType: AuthType.login,
             authStatus: AuthStatus.success));
       } else {
+        emit(state.copyWith(
+            authType: AuthType.signUp, authStatus: AuthStatus.loading));
         final account = await _mailRepository.register(
             username: event.username, password: event.password);
         emit(state.copyWith(
@@ -39,10 +45,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             authType: AuthType.signUp,
             authStatus: AuthStatus.success));
       }
-    } on AccountNotFoundFailure {
-      emit(state.copyWith(authStatus: AuthStatus.failure));
-    } on RegistrationRequestFailure {
-      emit(state.copyWith(authStatus: AuthStatus.failure));
+    } on AccountAlreadyExistFailure {
+      emit(state.copyWith(
+          authType: AuthType.signUp,
+          authStatus: AuthStatus.accountExistFailure));
+    } on AccountNotExistFailure {
+      emit(state.copyWith(authStatus: AuthStatus.accountNotExistFailure));
     } on Exception {
       emit(state.copyWith(authStatus: AuthStatus.failure));
     }

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 
 class MailBlocObserver extends BlocObserver {
   @override
@@ -22,11 +23,13 @@ class MailBlocObserver extends BlocObserver {
   ) {
     super.onTransition(bloc, transition);
     log('onTransition $transition');
+    debugPrint('onTransition $transition');
   }
 
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
     log('onError $error');
+    debugPrint('onError $error');
   }
 }

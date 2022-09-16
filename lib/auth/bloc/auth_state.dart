@@ -13,7 +13,15 @@ extension AuthTypeX on AuthType {
   bool get isSignUp => this == AuthType.signUp;
 }
 
-enum AuthStatus { initial, loading, success, failure, noConnection }
+enum AuthStatus {
+  initial,
+  loading,
+  success,
+  failure,
+  noConnection,
+  accountExistFailure,
+  accountNotExistFailure
+}
 
 enum AuthType { signUp, login }
 
@@ -28,7 +36,7 @@ enum AuthType { signUp, login }
 class AuthState extends Equatable {
   const AuthState(
       {this.account,
-      this.authType = AuthType.signUp,
+      this.authType = AuthType.login,
       this.authStatus = AuthStatus.initial});
 
   final Account? account;

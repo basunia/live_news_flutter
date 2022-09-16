@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/auth/bloc/auth_bloc.dart';
 import 'package:mail_automation/auth/view/login_page.dart';
+import 'package:mail_automation/auth/view/profile_page.dart';
 import 'package:mail_automation/auth/view/signup_page.dart';
+import 'package:mail_automation/auth/widget/login_loader.dart';
+import 'package:mail_automation/auth/widget/registration_loader.dart';
+import 'package:mail_automation/utils/toast.dart';
 import 'package:mail_repository/mail_repository.dart';
 
 typedef AuthCallBack = void Function<T>(T, T);
@@ -26,14 +30,35 @@ class AuthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Mail Authomation')),
+      appBar: AppBar(title: Builder(builder: (context) {
+        return const Text('Mail Authomation');
+      })),
       body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          switch (state.authStatus) {
+            case AuthStatus.success:
+              Navigator.push(
+                  context, ProfilePage.route(profile: state.account));
+              break;
+            case AuthStatus.failure:
+              showMessage(context, 'Something went wrong!');
+              break;
+            case AuthStatus.accountExistFailure:
+              showMessage(
+                  context, 'Account already exist!, \nYou need to log In');
+              break;
+            case AuthStatus.accountNotExistFailure:
+              showMessage(
+                  context, 'Account not found! \nYou need sign up first');
+              break;
+            default:
+          }
+        },
         builder: (context, state) {
           if (state.authType.isLogin) {
             switch (state.authStatus) {
               case AuthStatus.loading:
-                return const CircularProgressIndicator();
+                return const LoginLoader();
               case AuthStatus.failure:
               case AuthStatus.initial:
               default:
@@ -42,7 +67,7 @@ class AuthView extends StatelessWidget {
           } else {
             switch (state.authStatus) {
               case AuthStatus.loading:
-                return const CircularProgressIndicator();
+                return const SignUpLoader();
               case AuthStatus.failure:
               case AuthStatus.initial:
               default:
@@ -78,10 +103,15 @@ class AuthView extends StatelessWidget {
               const PageChangeRequested(requestedPageType: PageType.signUp));
         },
         onLogIn: <String>(userName, passWord) {
+          if (userName.toString().trim().isEmpty &&
+              passWord.toString().trim().isEmpty) {
+            showMessage(context, 'Username and Password can not be empty!');
+            return;
+          }
           context.read<AuthBloc>().add(AuthReguested(
               authType: AuthType.login,
-              username: userName.toString(),
-              password: passWord.toString()));
+              username: userName.toString().trim(),
+              password: passWord.toString().trim()));
         },
       );
 
@@ -89,10 +119,15 @@ class AuthView extends StatelessWidget {
         context
             .read<AuthBloc>()
             .add(const PageChangeRequested(requestedPageType: PageType.login));
-      }, onSignUp: <String>(userName, passWord) {
+      }, onSignUp: <String>(String userName, String passWord) {
+        if (userName.toString().trim().isEmpty &&
+            passWord.toString().trim().isEmpty) {
+          showMessage(context, 'Username and Password can not be empty!');
+          return;
+        }
         context.read<AuthBloc>().add(AuthReguested(
             authType: AuthType.signUp,
-            username: userName.toString(),
-            password: passWord.toString()));
+            username: userName.toString().trim(),
+            password: passWord.toString().trim()));
       });
 }
