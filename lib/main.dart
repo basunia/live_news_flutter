@@ -18,16 +18,23 @@ void main() async {
             future: apiClient.getLiveNews(),
             builder: (context, snapshot) {
               return snapshot.hasData && snapshot.data!.isNotEmpty
-                  ? ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, i) {
-                        final news = snapshot.data![i];
-                        return ListTile(
-                          dense: true,
-                          title: Text(news.title),
-                          subtitle: Text(news.description),
-                        );
-                      })
+                  ? Container(
+                      color: Colors.black87,
+                      child: ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, i) {
+                            final news = snapshot.data![i];
+                            return ListTile(
+                              textColor: Colors.white,
+                              leading: Text('${i + 1}'),
+                              // dense: true,
+                              title: Text(
+                                news.title,
+                              ),
+                              subtitle: Text(news.description),
+                            );
+                          }),
+                    )
                   : const Center(child: Text('No data found'));
             },
           ))));

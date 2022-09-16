@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mail_tm_api/src/base_clent.dart';
@@ -7,25 +9,43 @@ import 'model/account.dart';
 import 'model/domain.dart';
 
 /// Exception thrown when domain fetch fails.
-class DomainRequestFailure implements Exception {}
+class DomainRequestFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
 
 /// Exception thrown when the provided domain list is not found.
-class DomainNotFoundFailure implements Exception {}
+class DomainNotFoundFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
 
 /// Exception thrown when token request fails.
 class TokenRequestFailure implements Exception {}
 
 /// Exception thrown when the token is not found.
-class TokenNotFoundFailure implements Exception {}
+class TokenNotFoundFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
 
 /// Exception thrown when registration process fails.
-class RegistrationRequestFailure implements Exception {}
+class RegistrationRequestFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
 
 /// Exception thrown when the provided account info is not found.
-class AccountNotFoundFailure implements Exception {}
+class AccountNotFoundFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
 
 /// Exception thrown when news request fails.
-class NewsRequestFailure implements Exception {}
+class NewsRequestFailure implements Exception {
+  @override
+  String toString() => '$runtimeType';
+}
 
 /// Exception thrown when the news is not found.
 class NewsNotFoundFailure implements Exception {}
