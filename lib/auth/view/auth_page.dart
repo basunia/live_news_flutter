@@ -50,8 +50,8 @@ class AuthView extends StatelessWidget {
         listener: (context, state) {
           switch (state.authStatus) {
             case AuthStatus.success:
-              Navigator.pushReplacement(
-                  context, ProfilePage.route(profile: state.account));
+              Navigator.push(context,
+                  ProfilePage.route(context: context, profile: state.account));
               break;
             case AuthStatus.failure:
               showMessage(context, 'Something went wrong!');

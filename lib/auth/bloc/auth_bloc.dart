@@ -15,6 +15,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     on<AlreadyLoginCheckRequested>(_onAlreadyLoginChecked);
     on<AuthReguested>(_onAuthRequested);
     on<PageChangeRequested>(_onPageChageRequested);
+    on<LogOutRequested>(_onLogOutRequested);
   }
 
   final MailRepository _mailRepository;
@@ -24,6 +25,10 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     if (state.authStatus.isSuccess) {
       emit(state.copyWith());
     }
+  }
+
+  _onLogOutRequested(LogOutRequested event, Emitter<AuthState> emit) {
+    clear();
   }
 
   _onPageChageRequested(PageChangeRequested event, Emitter<AuthState> emit) =>
