@@ -9,6 +9,8 @@ import 'package:mail_automation/auth/widget/registration_loader.dart';
 import 'package:mail_automation/utils/toast.dart';
 import 'package:mail_repository/mail_repository.dart';
 
+import '../bloc/auth_state.dart';
+
 typedef AuthCallBack = void Function<T>(T, T);
 
 class AuthPage extends StatelessWidget {
@@ -18,7 +20,8 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          AuthBloc(mailRepository: context.read<MailRepository>()),
+          AuthBloc(mailRepository: context.read<MailRepository>())
+            ..add(AlreadyLoginCheckRequested()),
       child: const AuthView(),
     );
   }
@@ -30,14 +33,24 @@ class AuthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Builder(builder: (context) {
-        return const Text('Mail Authomation');
-      })),
+      appBar: AppBar(
+          title: BlocSelector<AuthBloc, AuthState, AuthType>(
+        selector: (state) {
+          return state.authType;
+        },
+        builder: (context, state) {
+          return Text(state.isSignUp ? 'Sign Up Page' : 'LogIn Page');
+        },
+      )),
+      // appBar: AppBar(
+      //     title: Text(context.select((AuthState e) => e.authType).isSignUp
+      //         ? 'Sign Up Page'
+      //         : 'LogIn Page')),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           switch (state.authStatus) {
             case AuthStatus.success:
-              Navigator.push(
+              Navigator.pushReplacement(
                   context, ProfilePage.route(profile: state.account));
               break;
             case AuthStatus.failure:
@@ -51,6 +64,9 @@ class AuthView extends StatelessWidget {
               showMessage(
                   context, 'Account not found! \nYou need sign up first');
               break;
+            // case AuthStatus.alreadyLoggedIn:
+
+            //   break;
             default:
           }
         },

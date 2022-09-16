@@ -32,6 +32,8 @@ class PageChangeRequested extends AuthEvent {
   final PageType requestedPageType;
 }
 
+class AlreadyLoginCheckRequested extends AuthEvent {}
+
 // class LoginRequested extends AuthEvent {
 //   const LoginRequested({required this.username, required this.password});
 //   @override

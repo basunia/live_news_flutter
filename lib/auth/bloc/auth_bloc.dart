@@ -1,21 +1,30 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mail_repository/mail_repository.dart';
-import 'package:mail_repository/src/model/account.dart';
 import 'package:mail_tm_api/mail_tm_api.dart' hide Account;
 
-part 'auth_event.dart';
-part 'auth_state.dart';
+import 'auth_state.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
+part 'auth_event.dart';
+// part 'auth_state.dart';
+
+class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   AuthBloc({required MailRepository mailRepository})
       : _mailRepository = mailRepository,
         super(const AuthState()) {
+    on<AlreadyLoginCheckRequested>(_onAlreadyLoginChecked);
     on<AuthReguested>(_onAuthRequested);
     on<PageChangeRequested>(_onPageChageRequested);
   }
 
   final MailRepository _mailRepository;
+
+  _onAlreadyLoginChecked(
+      AlreadyLoginCheckRequested event, Emitter<AuthState> emit) {
+    if (state.authStatus.isSuccess) {
+      emit(state.copyWith());
+    }
+  }
 
   _onPageChageRequested(PageChangeRequested event, Emitter<AuthState> emit) =>
       emit(event.requestedPageType.isLoginPage
@@ -55,4 +64,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(state.copyWith(authStatus: AuthStatus.failure));
     }
   }
+
+  @override
+  AuthState? fromJson(Map<String, dynamic> json) => AuthState.fromJson(json);
+  @override
+  Map<String, dynamic>? toJson(AuthState state) => state.toJson();
 }

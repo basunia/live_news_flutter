@@ -1,4 +1,9 @@
-part of 'auth_bloc.dart';
+// part of 'auth_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:mail_repository/mail_repository.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'auth_state.g.dart';
 
 extension AuthStatusX on AuthStatus {
   bool get isInitial => this == AuthStatus.initial;
@@ -20,7 +25,8 @@ enum AuthStatus {
   failure,
   noConnection,
   accountExistFailure,
-  accountNotExistFailure
+  accountNotExistFailure,
+  alreadyLoggedIn
 }
 
 enum AuthType { signUp, login }
@@ -33,6 +39,7 @@ enum AuthType { signUp, login }
 //   List<Object?> get props => [];
 // }
 
+@JsonSerializable()
 class AuthState extends Equatable {
   const AuthState(
       {this.account,
@@ -51,6 +58,10 @@ class AuthState extends Equatable {
       authStatus: authStatus ?? this.authStatus,
     );
   }
+
+  Map<String, dynamic> toJson() => _$AuthStateToJson(this);
+
+  factory AuthState.fromJson(json) => _$AuthStateFromJson(json);
 
   @override
   List<Object?> get props => [account, authType, authStatus];
