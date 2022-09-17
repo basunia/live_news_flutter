@@ -32,7 +32,9 @@ class _NewsPageState extends State<NewsPage> {
   @override
   void initState() {
     super.initState();
-    context.read<NewsBloc>().add(NewsFechRequested());
+    context
+        .read<NewsBloc>()
+        .add(const NewsFechRequested(fetchType: FetchType.onStartUp));
   }
 
   @override
