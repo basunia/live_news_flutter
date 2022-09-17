@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/news/view/news_item.dart';
+import 'package:mail_automation/news/widget/empty_data.dart';
+import 'package:mail_automation/news/widget/news_fetch_error.dart';
 import 'package:mail_automation/news/widget/news_loader.dart';
 
 import '../../main/home_nav_drawer.dart';
@@ -67,14 +69,17 @@ class _NewsPageState extends State<NewsPage> {
               case NewsStatus.success:
                 debugPrint(state.news.toString());
                 // return Text('first news ${state.news.first}');
-                if (state.news.isEmpty) return const Text('empty_data').tr();
+                if (state.news.isEmpty) {
+                  return const EmptyData();
+                }
                 return ListView.builder(
                     itemCount: state.news.length,
                     itemBuilder: (context, i) {
                       return NewsItem(newsItem: state.news[i], index: (i + 1));
                     });
+              case NewsStatus.failure:
               default:
-                return const Text('empty_data').tr();
+                return NewsFetchError(onRefresh: _onRefresh);
             }
           },
         ),

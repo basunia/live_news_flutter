@@ -42,14 +42,19 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               children: [
                 Text(
                   'title',
-                  style: textTheme.titleLarge?.copyWith(color: Colors.white),
+                  style: textTheme.titleMedium?.copyWith(color: Colors.white),
                 ).tr(),
                 const SizedBox(
                   height: 12.0,
                 ),
-                Image(
-                  image: AssetImage("assets/images/$icon"),
-                ),
+
+                Text(
+                  'riseup_lab',
+                  style: textTheme.headline6?.copyWith(color: Colors.white),
+                ).tr(),
+                // Image(
+                //   image: AssetImage("assets/images/$icon"),
+                // ),
               ],
             ),
           ),

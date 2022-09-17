@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mail_repository/mail_repository.dart';
-import 'package:mail_tm_api/mail_tm_api.dart';
 
 import 'news_state.dart';
 
@@ -24,7 +23,6 @@ class NewsBloc extends HydratedBloc<NewsEvent, NewsState> {
       emit(state.copyWith(newsStatus: NewsStatus.loading));
       final news = await _mailRepository.getNews();
       emit(state.copyWith(news: news, newsStatus: NewsStatus.success));
-    } on NewsRequestFailure {
     } catch (e) {
       debugPrint(e.toString());
       emit(state.copyWith(newsStatus: NewsStatus.failure));
