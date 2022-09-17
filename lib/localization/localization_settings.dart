@@ -23,21 +23,21 @@ class LocalizationSettingsPage extends StatefulWidget {
 }
 
 class _LocalizationSettingsPageState extends State<LocalizationSettingsPage> {
-  String dropdownValue = Localization.menuItems.localeUK;
-  String icon = Localization.localeIcons.localeUK;
+  String dropdownValue = Localization.menuItems.localeUS;
+  String icon = Localization.localeIcons.localeUS;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     dropdownValue = (context.locale.toStringWithSeparator() ==
-            Localization.localeCodes.localeUK)
-        ? Localization.menuItems.localeUK
-        : Localization.menuItems.localeRomania;
+            Localization.localeCodes.localeUS)
+        ? Localization.menuItems.localeUS
+        : Localization.menuItems.localeBengali;
 
     icon = (context.locale.toStringWithSeparator() ==
-            Localization.localeCodes.localeUK)
-        ? Localization.localeIcons.localeUK
-        : Localization.localeIcons.localeRomania;
+            Localization.localeCodes.localeUS)
+        ? Localization.localeIcons.localeUS
+        : Localization.localeIcons.localeBengali;
   }
 
   @override
@@ -90,25 +90,25 @@ class _LocalizationSettingsPageState extends State<LocalizationSettingsPage> {
                           color: Colors.transparent,
                         ),
                         onChanged: (String? newValue) {
-                          if (newValue == Localization.menuItems.localeUK) {
-                            dropdownValue = Localization.menuItems.localeUK;
-                            icon = Localization.localeIcons.localeUK;
+                          if (newValue == Localization.menuItems.localeUS) {
+                            dropdownValue = Localization.menuItems.localeUS;
+                            icon = Localization.localeIcons.localeUS;
                             context
-                                .setLocale(Localization.locales.localeUK)
+                                .setLocale(Localization.locales.localeUS)
                                 .then((value) {
                               context.read<SettingsCubit>().setLocale(
-                                  Localization.localeSequence.localeUK);
+                                  Localization.localeSequence.localeUS);
                             });
                           } else if (newValue ==
-                              Localization.menuItems.localeRomania) {
+                              Localization.menuItems.localeBengali) {
                             dropdownValue =
-                                Localization.menuItems.localeRomania;
-                            icon = Localization.localeIcons.localeRomania;
+                                Localization.menuItems.localeBengali;
+                            icon = Localization.localeIcons.localeBengali;
                             context
-                                .setLocale(Localization.locales.localeRomania)
+                                .setLocale(Localization.locales.localeBengali)
                                 .then((value) {
                               context.read<SettingsCubit>().setLocale(
-                                  Localization.localeSequence.localeRomania);
+                                  Localization.localeSequence.localeBengali);
                             });
                           }
                         },
@@ -118,10 +118,10 @@ class _LocalizationSettingsPageState extends State<LocalizationSettingsPage> {
                             value: value,
                             child: Text(
                               value,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColor,
                               ),
                             ).tr(),
                           );

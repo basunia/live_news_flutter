@@ -25,26 +25,31 @@ class _SignUpPageState extends State<SignUpPage> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           // const Text('SignUp with username and passeword'),
-          TextFormField(
-            controller: _userNameController,
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              labelText: 'enter_your_username'.tr(),
-            ),
+          Column(
+            children: [
+              TextFormField(
+                controller: _userNameController,
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: 'enter_your_username'.tr(),
+                ),
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              TextFormField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: 'enter_your_password'.tr(),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(
-            height: 8.0,
-          ),
-          TextFormField(
-            controller: _passwordController,
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              labelText: 'enter_your_password'.tr(),
-            ),
-          ),
+
           // const Text('Sign Up to proceed'),
           ElevatedButton(
               onPressed: () {
@@ -54,7 +59,9 @@ class _SignUpPageState extends State<SignUpPage> {
               child: const Text('sign_up').tr()),
           OutlinedButton(
               onPressed: widget.onPageChange,
-              child: const Text('got_to_login_page').tr()),
+              child: const Text('got_to_login_page',
+                      style: TextStyle(fontWeight: FontWeight.w400))
+                  .tr()),
         ],
       ),
     );

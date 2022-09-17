@@ -17,30 +17,37 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           // const Text('Login with username and passeword'),
-          TextFormField(
-            controller: _userNameController,
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              labelText: 'enter_your_username'.tr(),
-            ),
+          Column(
+            children: [
+              TextFormField(
+                controller: _userNameController,
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: 'enter_your_username'.tr(),
+                ),
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              TextFormField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  labelText: 'enter_your_password'.tr(),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(
-            height: 8.0,
-          ),
-          TextFormField(
-            controller: _passwordController,
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              labelText: 'enter_your_password'.tr(),
-            ),
-          ),
+
           // const Text('Login to proceed'),
           ElevatedButton(
               onPressed: () {
@@ -49,8 +56,12 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: const Text('login').tr()),
           OutlinedButton(
-              onPressed: widget.onPageChange,
-              child: const Text('go_to_signup_page').tr()),
+            onPressed: widget.onPageChange,
+            child: const Text(
+              'go_to_signup_page',
+              style: TextStyle(fontWeight: FontWeight.w400),
+            ).tr(),
+          ),
         ],
       ),
     );

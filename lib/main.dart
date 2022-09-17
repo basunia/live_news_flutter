@@ -24,7 +24,7 @@ void main() async {
       path: 'assets/locales',
       supportedLocales: Localization.locales,
       saveLocale: true,
-      fallbackLocale: Localization.locales.localeUK,
+      fallbackLocale: Localization.locales.localeUS,
       child: MailApp(mailRepository: services.mailRepository),
     ));
   }, storage: storage);

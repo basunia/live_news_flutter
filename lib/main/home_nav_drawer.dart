@@ -14,15 +14,15 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
-  String icon = Localization.localeIcons.localeUK;
+  String icon = Localization.localeIcons.localeUS;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     icon = (context.locale.toStringWithSeparator() ==
-            Localization.localeCodes.localeUK)
-        ? Localization.localeIcons.localeUK
-        : Localization.localeIcons.localeRomania;
+            Localization.localeCodes.localeUS)
+        ? Localization.localeIcons.localeUS
+        : Localization.localeIcons.localeBengali;
   }
 
   @override
