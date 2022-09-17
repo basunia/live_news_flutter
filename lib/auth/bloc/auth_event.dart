@@ -36,6 +36,7 @@ class AlreadyLoginCheckRequested extends AuthEvent {}
 
 class LogOutRequested extends AuthEvent {}
 
+
 // class LoginRequested extends AuthEvent {
 //   const LoginRequested({required this.username, required this.password});
 //   @override

@@ -35,4 +35,5 @@ const _$AuthStatusEnumMap = {
   AuthStatus.noConnection: 'noConnection',
   AuthStatus.accountExistFailure: 'accountExistFailure',
   AuthStatus.accountNotExistFailure: 'accountNotExistFailure',
+  AuthStatus.alreadyLoggedIn: 'alreadyLoggedIn',
 };

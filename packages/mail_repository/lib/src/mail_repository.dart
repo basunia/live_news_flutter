@@ -46,4 +46,6 @@ class MailRepository {
     return Account(
         userId: userInfo.userId, emailId: userInfo.emailId, token: token);
   }
+
+  Future<List<News>> getNews() => _mailTmApiClient.getLiveNews();
 }

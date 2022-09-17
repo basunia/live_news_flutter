@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mail_automation/news/news_page.dart';
+import 'package:mail_automation/news/view/news_page.dart';
+import 'package:mail_repository/mail_repository.dart';
 
 import '../auth/bloc/auth_bloc.dart';
 import '../auth/view/profile_page.dart';
@@ -11,9 +12,12 @@ class HomePage extends StatefulWidget {
   static Route<void> route({required BuildContext context}) {
     return MaterialPageRoute(
       fullscreenDialog: false,
-      builder: (_) => BlocProvider.value(
-        value: context.read<AuthBloc>(),
-        child: const HomePage(),
+      builder: (_) => RepositoryProvider(
+        create: (context) => context.read<MailRepository>(),
+        child: BlocProvider.value(
+          value: context.read<AuthBloc>(),
+          child: const HomePage(),
+        ),
       ),
     );
   }

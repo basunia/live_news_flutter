@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mail_repository/mail_repository.dart';
 import 'package:mail_tm_api/mail_tm_api.dart' hide Account;
