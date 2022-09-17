@@ -123,7 +123,7 @@ class _LocalizationSettingsPageState extends State<LocalizationSettingsPage> {
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
-                            ),
+                            ).tr(),
                           );
                         }).toList(),
                       ),

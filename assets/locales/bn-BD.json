@@ -26,6 +26,9 @@
 
     "dark_mode":"ডার্ক মোড",
 
+    "bengali":"বাংলা",
+    "english":"ইংরেজি",
+
     "enter_your_password":"আপনার পাসওয়ার্ড লিখুন",
-    "enter_your_username":"আপনার ব্যবহারকারীর নাম লিখুন"
+    "enter_your_username":"আপনার নাম লিখুন"
 }

@@ -25,7 +25,10 @@
     "profile":"Profile",
     "logout":"Log Out",
 
-    "dark_mode":"Dark Mode",
+    "dark_mode":"Dark Mode", 
+
+    "bengali":"Bengali",
+    "english":"English",
 
     "enter_your_password":"Enter your password",
     "enter_your_username":"Enter your username"

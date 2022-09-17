@@ -131,7 +131,7 @@ class AuthView extends StatelessWidget {
         onLogIn: <String>(userName, passWord) {
           if (userName.toString().trim().isEmpty &&
               passWord.toString().trim().isEmpty) {
-            showMessage(context, 'Username and Password can not be empty!');
+            showMessage(context, 'msg_empty_username_password');
             return;
           }
           context.read<AuthBloc>().add(AuthReguested(
