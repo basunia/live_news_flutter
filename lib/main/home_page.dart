@@ -49,6 +49,9 @@ class _HomePageState extends State<HomePage> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).primaryColor,
         selectedLabelStyle: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.bold,
@@ -59,7 +62,6 @@ class _HomePageState extends State<HomePage> {
         ),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            // backgroundColor: brandColor,
             icon: Icon(Icons.home),
             label: 'News',
           ),
