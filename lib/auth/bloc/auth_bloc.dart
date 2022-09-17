@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/widgets.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:mail_repository/mail_repository.dart';
 import 'package:mail_tm_api/mail_tm_api.dart' hide Account;
@@ -7,7 +6,6 @@ import 'package:mail_tm_api/mail_tm_api.dart' hide Account;
 import 'auth_state.dart';
 
 part 'auth_event.dart';
-// part 'auth_state.dart';
 
 class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   AuthBloc({required MailRepository mailRepository})

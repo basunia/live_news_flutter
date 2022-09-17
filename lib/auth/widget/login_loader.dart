@@ -10,7 +10,6 @@ class LoginLoader extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      // mainAxisSize: MainAxisSize.min,
       children: [
         const SizedBox(
           height: 48.0,

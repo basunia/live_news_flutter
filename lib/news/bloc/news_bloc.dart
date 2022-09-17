@@ -6,7 +6,6 @@ import 'package:mail_repository/mail_repository.dart';
 import 'news_state.dart';
 
 part 'news_event.dart';
-// part 'news_state.dart';
 
 class NewsBloc extends HydratedBloc<NewsEvent, NewsState> {
   NewsBloc({required MailRepository mailRepository})

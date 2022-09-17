@@ -62,11 +62,6 @@ class ProfilePage extends StatelessWidget {
               OutlinedButton(
                   onPressed: () {
                     context.read<AuthBloc>().add(LogOutRequested());
-                    // BlocProvider.of<AuthBloc>(context).add(LogOutRequested());
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const AuthPage()));
                   },
                   child: const Text('logout').tr()),
             ],

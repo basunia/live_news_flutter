@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/auth/bloc/auth_bloc.dart';
 import 'package:mail_automation/auth/view/login_page.dart';
-import 'package:mail_automation/auth/view/profile_page.dart';
 import 'package:mail_automation/auth/view/signup_page.dart';
 import 'package:mail_automation/auth/widget/login_loader.dart';
 import 'package:mail_automation/auth/widget/registration_loader.dart';
 import 'package:mail_automation/main/home_page.dart';
 import 'package:mail_automation/utils/toast.dart';
-import 'package:mail_repository/mail_repository.dart';
 
 import '../../main/home_nav_drawer.dart';
 import '../bloc/auth_state.dart';
@@ -29,12 +27,6 @@ class AuthPage extends StatelessWidget {
         return state.isSuccess ? const HomePage() : const AuthView();
       },
     );
-    // return BlocProvider(
-    //   create: (context) =>
-    //       AuthBloc(mailRepository: context.read<MailRepository>())
-    //         ..add(AlreadyLoginCheckRequested()),
-    //   child: const AuthView(),
-    // );
   }
 }
 
@@ -62,8 +54,6 @@ class AuthView extends StatelessWidget {
         listener: (context, state) {
           switch (state.authStatus) {
             case AuthStatus.success:
-              //TODO: error
-              // Navigator.push(context, HomePage.route(context: context));
               break;
             case AuthStatus.failure:
               showMessage(context, 'erorr_message');
@@ -74,9 +64,6 @@ class AuthView extends StatelessWidget {
             case AuthStatus.accountNotExistFailure:
               showMessage(context, 'msg_account_not_found');
               break;
-            // case AuthStatus.alreadyLoggedIn:
-
-            //   break;
             default:
           }
         },
@@ -100,24 +87,6 @@ class AuthView extends StatelessWidget {
                 return getSignUpPage(context);
             }
           }
-          //  else if (state.authType.isSignIn && state.authStatus.isSuccess) {
-          // } else if (state.authType.isSignIn && state.authStatus.isSuccess) {}
-
-          // return state.authType.isSignIn && state.authStatus.isSuccess
-          //     ? LoginPage(
-          //         onLogIn: <String>(userName, passWord) {
-          //           context.read<AuthBloc>().add(AuthReguested(
-          //               authType: AuthType.signIn,
-          //               username: userName.toString(),
-          //               password: passWord.toString()));
-          //         },
-          //       )
-          //     : SignUpPage(onSignUp: <String>(userName, passWord) {
-          //         context.read<AuthBloc>().add(AuthReguested(
-          //             authType: AuthType.signUp,
-          //             username: userName.toString(),
-          //             password: passWord.toString()));
-          //       });
         },
       ),
     );

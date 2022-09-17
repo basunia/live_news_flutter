@@ -79,48 +79,11 @@ class MailAppView extends StatelessWidget {
         );
       },
     );
-
-    // return const MaterialApp(
-    //   title: 'Mail Automation',
-    //   home: AuthPage(),
-    // );
-
-    // return BlocBuilder<SettingsCubit, SettingsState>(
-    //   buildWhen: ((previous, current) {
-    //     if (previous != current) {
-    //       needRebuild = true;
-    //     }
-    //     return needRebuild;
-    //   }),
-    //   builder: (context, state) {
-    //     debugPrint(
-    //         'Locale id ${state.localeId}, ${context.locale.toStringWithSeparator()}');
-    //     debugPrint('Theme id ${state.themeId},');
-    //     if (needRebuild) {
-    //       _rebuildAllChildren(context);
-    //     }
-    //     return MaterialApp(
-    //       title: 'newsItem Library',
-    //       localizationsDelegates: context.localizationDelegates,
-    //       supportedLocales: context.supportedLocales,
-    //       locale: context.locale,
-    //       debugShowCheckedModeBanner: false,
-    //       theme:
-    //           state.themeId == 0 ? ColorsLight.themeData : ColorsDark.themeData,
-    //       home: Builder(builder: (context) {
-    //         debugPrint(
-    //             'Locale id ${state.localeId}, ${context.locale.toStringWithSeparator()}');
-
-    //         return const newsItemListPage();
-    //       }),
-    //     );
-    //   },
-    // );
   }
 
   /// Needed for updating locale
   /// https://stackoverflow.com/a/58513635/8198725
-  /// TODO: we can overcome the issue by using [getx]
+  /// TODO: we can overcome the issue by using [getx] etc
   void _rebuildAllChildren(BuildContext context) {
     debugPrint('Rebuilding children..');
     void rebuild(Element el) {

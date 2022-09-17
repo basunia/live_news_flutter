@@ -25,7 +25,6 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // const Text('Login with username and passeword'),
           Column(
             children: [
               TextFormField(
@@ -47,8 +46,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
-
-          // const Text('Login to proceed'),
           ElevatedButton(
               onPressed: () {
                 widget.onLogIn(

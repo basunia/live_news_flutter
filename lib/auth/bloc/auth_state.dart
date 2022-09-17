@@ -31,14 +31,6 @@ enum AuthStatus {
 
 enum AuthType { signUp, login }
 
-// abstract class AuthState extends Equatable {
-//   abstract final Account? account;
-//   abstract final AuthStatus authStatus;
-
-//   @override
-//   List<Object?> get props => [];
-// }
-
 @JsonSerializable()
 class AuthState extends Equatable {
   const AuthState(

@@ -47,14 +47,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 const SizedBox(
                   height: 12.0,
                 ),
-
                 Text(
                   'riseup_lab',
                   style: textTheme.headline6?.copyWith(color: Colors.white),
                 ).tr(),
-                // Image(
-                //   image: AssetImage("assets/images/$icon"),
-                // ),
               ],
             ),
           ),
@@ -81,12 +77,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               );
             },
           ),
-          // ListTile(
-          //   title: const Text('my_location').tr(),
-          //   onTap: () {
-          //     Navigator.push(context, LocationPage.route());
-          //   },
-          // ),
           ListTile(
             title: const Text('lanuguage').tr(),
             onTap: () {
@@ -96,35 +86,5 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         ],
       ),
     );
-    // return Builder(builder: (context) {
-    //   final width = MediaQuery.of(context).size.width;
-    //   final height = MediaQuery.of(context).size.height;
-
-    //   return Container(
-    //       height: height,
-    //       width: width * 0.8,
-    //       decoration: const BoxDecoration(color: Colors.white),
-    //       child: Padding(
-    //         padding: const EdgeInsets.all(8.0),
-    //         child: ListView(
-    //           children: [],
-    //         ),
-    //         // child: Column(
-    //         //   mainAxisAlignment: MainAxisAlignment.center,
-    //         //   crossAxisAlignment: CrossAxisAlignment.start,
-    //         //   children: [
-    //         //     InkWell(
-    //         //         onTap: () {
-    //         //           Navigator.push(context, LocationPage.route());
-    //         //         },
-    //         //         child: const Text('My location')),
-    //         //     const SizedBox(
-    //         //       height: 8.0,
-    //         //     ),
-    //         //     const Text('Change language'),
-    //         //   ],
-    //         // ),
-    //       ));
-    // });
   }
 }

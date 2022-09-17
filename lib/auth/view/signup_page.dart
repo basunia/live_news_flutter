@@ -27,7 +27,6 @@ class _SignUpPageState extends State<SignUpPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // const Text('SignUp with username and passeword'),
           Column(
             children: [
               TextFormField(
@@ -49,8 +48,6 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ],
           ),
-
-          // const Text('Sign Up to proceed'),
           ElevatedButton(
               onPressed: () {
                 widget.onSignUp(

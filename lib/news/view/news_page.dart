@@ -10,20 +10,6 @@ import '../../main/home_nav_drawer.dart';
 import '../bloc/news_bloc.dart';
 import '../bloc/news_state.dart';
 
-// class NewsPage extends StatelessWidget {
-//   const NewsPage({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     // return BlocProvider(
-//     //   create: (context) =>
-//     //       NewsBloc(mailRepository: context.read<MailRepository>())
-//     //         ..add(NewsFechRequested()),
-//     //   child: const NewsPageView(),
-//     // );
-//   }
-// }
-
 class NewsPage extends StatefulWidget {
   const NewsPage({Key? key}) : super(key: key);
 

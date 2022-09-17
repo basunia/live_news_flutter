@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mail_automation/main/home_nav_drawer.dart';
 import 'package:mail_automation/news/view/news_page.dart';
 import 'package:mail_repository/mail_repository.dart';
 
@@ -29,8 +28,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  // static TextStyle optionStyle =
-  //     const TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     NewsPage(),
     ProfilePage()
