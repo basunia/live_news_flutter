@@ -60,7 +60,7 @@ class MailAppView extends StatelessWidget {
     //       _rebuildAllChildren(context);
     //     }
     //     return MaterialApp(
-    //       title: 'Movie Library',
+    //       title: 'newsItem Library',
     //       localizationsDelegates: context.localizationDelegates,
     //       supportedLocales: context.supportedLocales,
     //       locale: context.locale,
@@ -71,7 +71,7 @@ class MailAppView extends StatelessWidget {
     //         debugPrint(
     //             'Locale id ${state.localeId}, ${context.locale.toStringWithSeparator()}');
 
-    //         return const MovieListPage();
+    //         return const newsItemListPage();
     //       }),
     //     );
     //   },
