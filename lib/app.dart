@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/auth/view/auth_page.dart';
 import 'package:mail_repository/mail_repository.dart';
 
+import 'auth/bloc/auth_bloc.dart';
+
 class MailApp extends StatelessWidget {
   const MailApp({Key? key, required MailRepository mailRepository})
       : _mailRepository = mailRepository,
@@ -14,7 +16,12 @@ class MailApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
       value: _mailRepository,
-      child: MailAppView(),
+      child: BlocProvider(
+        create: (context) =>
+            AuthBloc(mailRepository: context.read<MailRepository>())
+              ..add(AlreadyLoginCheckRequested()),
+        child: MailAppView(),
+      ),
     );
   }
 }

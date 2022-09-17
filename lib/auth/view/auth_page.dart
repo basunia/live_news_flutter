@@ -18,12 +18,13 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          AuthBloc(mailRepository: context.read<MailRepository>())
-            ..add(AlreadyLoginCheckRequested()),
-      child: const AuthView(),
-    );
+    return const AuthView();
+    // return BlocProvider(
+    //   create: (context) =>
+    //       AuthBloc(mailRepository: context.read<MailRepository>())
+    //         ..add(AlreadyLoginCheckRequested()),
+    //   child: const AuthView(),
+    // );
   }
 }
 
@@ -50,7 +51,7 @@ class AuthView extends StatelessWidget {
         listener: (context, state) {
           switch (state.authStatus) {
             case AuthStatus.success:
-              Navigator.push(context,
+              Navigator.pushReplacement(context,
                   ProfilePage.route(context: context, profile: state.account));
               break;
             case AuthStatus.failure:
@@ -58,7 +59,7 @@ class AuthView extends StatelessWidget {
               break;
             case AuthStatus.accountExistFailure:
               showMessage(
-                  context, 'Account already exist!, \nYou need to log In');
+                  context, 'Account already exist! \nYou need to log In');
               break;
             case AuthStatus.accountNotExistFailure:
               showMessage(
