@@ -17,9 +17,9 @@ class LoginLoader extends StatelessWidget {
         ),
         Center(
           child: Text(
-            'Login In In progress...',
+            'msg_login_in_progress',
             style: theme.textTheme.headline5,
-          ),
+          ).tr(),
         ),
         Padding(
           padding: const EdgeInsets.all(16),

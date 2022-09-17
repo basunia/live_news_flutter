@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mail_automation/auth/view/auth_page.dart';
 
@@ -26,12 +27,12 @@ class _SignUpPageState extends State<SignUpPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('SignUp with username and passeword'),
+          // const Text('SignUp with username and passeword'),
           TextFormField(
             controller: _userNameController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Enter your username',
+            decoration: InputDecoration(
+              border: const OutlineInputBorder(),
+              labelText: 'enter_your_username'.tr(),
             ),
           ),
           const SizedBox(
@@ -39,21 +40,21 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           TextFormField(
             controller: _passwordController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Enter your password',
+            decoration: InputDecoration(
+              border: const OutlineInputBorder(),
+              labelText: 'enter_your_password'.tr(),
             ),
           ),
-          const Text('Sign Up to proceed'),
+          // const Text('Sign Up to proceed'),
           ElevatedButton(
               onPressed: () {
                 widget.onSignUp(
                     _userNameController.text, _passwordController.text);
               },
-              child: const Text('Sign Up')),
+              child: const Text('sign_up').tr()),
           OutlinedButton(
               onPressed: widget.onPageChange,
-              child: const Text('Go to Log In page')),
+              child: const Text('got_to_login_page').tr()),
         ],
       ),
     );

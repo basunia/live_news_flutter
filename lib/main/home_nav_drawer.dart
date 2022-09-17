@@ -60,7 +60,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             builder: (context, state) {
               return SwitchListTile(
                 activeColor: Theme.of(context).colorScheme.secondary,
-                title: const Text('Dark Mode'),
+                title: const Text('dark_mode').tr(),
                 value: state == 0 ? false : true,
                 onChanged: (bool value) {
                   setState(() {

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class NewsLoader extends StatelessWidget {
@@ -16,9 +17,9 @@ class NewsLoader extends StatelessWidget {
         ),
         Center(
           child: Text(
-            'Fetching news...',
+            'msg_news_fetch',
             style: theme.textTheme.headline5,
-          ),
+          ).tr(),
         ),
         Padding(
           padding: const EdgeInsets.all(16),

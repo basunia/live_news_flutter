@@ -1,0 +1,31 @@
+{
+    "title" : "তাজা খবর",
+    "empty_data": "কোন তথ্য পাওয়া যায়নি!",
+    "erorr_message": "কিছু ভুল হয়েছে! \nঅনুগ্রহ করে একটু পরে আবার চেষ্টা করুন।",
+
+    "no_internet_msg": "দুঃখিত, ইন্টারনেট নেই! আপনার নেটওয়ার্ক সংযোগ পরীক্ষা করুন।",
+    "refresh": "রিফ্রেশ",
+    "lanuguage": "ভাষা",
+    "change_language": "ভাষা পরিবর্তন করুন",
+    "msg_already_registered":"ইতোমধ্যে একাউন্ট আছে! \nআপনাকে লগ ইন করতে হবে।",
+    "msg_account_not_found":"অ্যাকাউন্ট পাওয়া যায় নি! \nআপনাকে প্রথমে সাইন আপ করতে হবে।",
+    "msg_empty_username_password":"ব্যবহারকারীর নাম এবং পাসওয়ার্ড খালি থাকতে পারে না!",
+    "msg_login_in_progress":"লগইন চলছে ...",
+    "msg_sign_in_progress":"সাইন ইন চলছে ...",
+    "msg_news_fetch":"খবর সংগ্রহ করা হচ্ছে ...",
+
+    "go_to_signup_page":"সাইন আপ পেজে যান।",
+    "got_to_login_page":"লগইন পেজে যান।",
+
+    "sign_up":"সাইন আপ করুন।",
+    "login":"লগ ইন করুন।",
+    "sign_up_page":"সাইন আপ",
+    "login_page":"লগ ইন",
+    "profile":"প্রোফাইল",
+    "logout":"প্রস্থান",
+
+    "dark_mode":"ডার্ক মোড",
+
+    "enter_your_password":"আপনার পাসওয়ার্ড লিখুন",
+    "enter_your_username":"আপনার ব্যবহারকারীর নাম লিখুন"
+}

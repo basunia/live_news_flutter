@@ -1,0 +1,32 @@
+{
+    "title" : "Live News",
+    "empty_data": "No data found!",
+    "erorr_message": "Something went wrong! \n Please try again later.",
+
+    "no_internet_msg": "Sorry no Internet! Please check your network connection.",
+    "refresh": "Refresh",
+    "lanuguage": "Language",
+    "change_language": "Change language",
+    "msg_already_registered":"Account already exist! \nYou need to log In.",
+    "msg_account_not_found":"Account not found! \nYou need sign up first.",
+    "msg_empty_username_password":"Username and Password can not be empty!",
+
+    "":"Fetching news...",
+    "msg_login_in_progress":"Login In progress...",
+    "msg_sign_in_progress":"Sign In progress...",
+
+    "go_to_signup_page":"Go to signup page",
+    "got_to_login_page":"Go to login page",
+
+    "sign_up":"Sing Up",
+    "login":"Log In",
+    "sign_up_page":"Sing Up",
+    "login_page":"Log In",
+    "profile":"Profile",
+    "logout":"Log Out",
+
+    "dark_mode":"Dark Mode",
+
+    "enter_your_password":"Enter your password",
+    "enter_your_username":"Enter your username"
+}

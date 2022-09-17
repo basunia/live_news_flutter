@@ -63,7 +63,7 @@ class MailAppView extends StatelessWidget {
           _rebuildAllChildren(context);
         }
         return MaterialApp(
-          title: 'News App',
+          title: 'Live News',
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,

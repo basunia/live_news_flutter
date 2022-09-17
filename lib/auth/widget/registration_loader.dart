@@ -17,9 +17,9 @@ class SignUpLoader extends StatelessWidget {
         ),
         Center(
           child: Text(
-            'Sign Up In progress...',
+            'msg_sign_in_progress',
             style: theme.textTheme.headline5,
-          ),
+          ).tr(),
         ),
         Padding(
           padding: const EdgeInsets.all(16),

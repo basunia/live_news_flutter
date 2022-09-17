@@ -52,7 +52,7 @@ class _NewsPageState extends State<NewsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('News page'),
+        title: const Text('title').tr(),
       ),
       drawer: const NavigationDrawer(),
       body: RefreshIndicator(
@@ -67,14 +67,14 @@ class _NewsPageState extends State<NewsPage> {
               case NewsStatus.success:
                 debugPrint(state.news.toString());
                 // return Text('first news ${state.news.first}');
-                if (state.news.isEmpty) return const Text('No news found!');
+                if (state.news.isEmpty) return const Text('empty_data').tr();
                 return ListView.builder(
                     itemCount: state.news.length,
                     itemBuilder: (context, i) {
                       return NewsItem(newsItem: state.news[i], index: (i + 1));
                     });
               default:
-                return const Text('No news found!');
+                return const Text('empty_data').tr();
             }
           },
         ),

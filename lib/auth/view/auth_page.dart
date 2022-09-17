@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/auth/bloc/auth_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:mail_automation/main/home_page.dart';
 import 'package:mail_automation/utils/toast.dart';
 import 'package:mail_repository/mail_repository.dart';
 
+import '../../main/home_nav_drawer.dart';
 import '../bloc/auth_state.dart';
 
 typedef AuthCallBack = void Function<T>(T, T);
@@ -42,13 +44,14 @@ class AuthView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavigationDrawer(),
       appBar: AppBar(
           title: BlocSelector<AuthBloc, AuthState, AuthType>(
         selector: (state) {
           return state.authType;
         },
         builder: (context, state) {
-          return Text(state.isSignUp ? 'Sign Up Page' : 'LogIn Page');
+          return Text(state.isSignUp ? 'sign_up_page' : 'login_page').tr();
         },
       )),
       // appBar: AppBar(
@@ -63,15 +66,13 @@ class AuthView extends StatelessWidget {
               // Navigator.push(context, HomePage.route(context: context));
               break;
             case AuthStatus.failure:
-              showMessage(context, 'Something went wrong!');
+              showMessage(context, 'erorr_message');
               break;
             case AuthStatus.accountExistFailure:
-              showMessage(
-                  context, 'Account already exist! \nYou need to log In');
+              showMessage(context, 'msg_already_registered');
               break;
             case AuthStatus.accountNotExistFailure:
-              showMessage(
-                  context, 'Account not found! \nYou need sign up first');
+              showMessage(context, 'msg_account_not_found');
               break;
             // case AuthStatus.alreadyLoggedIn:
 
@@ -147,7 +148,7 @@ class AuthView extends StatelessWidget {
       }, onSignUp: <String>(String userName, String passWord) {
         if (userName.toString().trim().isEmpty &&
             passWord.toString().trim().isEmpty) {
-          showMessage(context, 'Username and Password can not be empty!');
+          showMessage(context, 'msg_empty_username_password');
           return;
         }
         context.read<AuthBloc>().add(AuthReguested(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/auth/bloc/auth_bloc.dart';
@@ -11,7 +12,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Profile')),
+      appBar: AppBar(title: const Text('profile').tr()),
       body: BlocConsumer<AuthBloc, AuthState>(
         listener: (context, state) {
           // TODO: implement listener
@@ -38,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                     //     MaterialPageRoute(
                     //         builder: (context) => const AuthPage()));
                   },
-                  child: const Text('Log out')),
+                  child: const Text('logout').tr()),
             ],
           );
         },
