@@ -1,0 +1,17 @@
+{
+    "title" : "Movie Library",
+    "empty_data": "No movies found!",
+    "searched_keyword": "Searched with random keyword",
+    "empty_data_single": "No movie found!",
+    "erorr_message": "Something went wrong! \n Please try again later",
+    "movie_detail": "Movie Detail",
+    "no_internet_msg": "Sorry no Internet! Please check your network connection",
+    "refresh": "Refresh",
+    "search_movie": "Search",
+    "back_to_home": "Back to home",
+    "lanuguage": "Language",
+    "change_language": "Change language",
+    "my_location": "My location",
+    "loading_movies":"Loading movies",
+    "loading_movie_single":"Loading Movie"
+}

@@ -1,6 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/auth/view/auth_page.dart';
+import 'package:mail_automation/settings/cubit/settings_cubit.dart';
+import 'package:mail_automation/settings/cubit/settings_state.dart';
+import 'package:mail_automation/utils/themes.dart';
 import 'package:mail_repository/mail_repository.dart';
 
 import 'auth/bloc/auth_bloc.dart';
@@ -28,6 +32,9 @@ class MailApp extends StatelessWidget {
             create: (context) =>
                 NewsBloc(mailRepository: context.read<MailRepository>()),
           ),
+          BlocProvider(
+            create: (context) => SettingsCubit(),
+          ),
         ],
         child: MailAppView(),
       ),
@@ -41,10 +48,43 @@ class MailAppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Mail Automation',
-      home: AuthPage(),
+    return BlocBuilder<SettingsCubit, SettingsState>(
+      buildWhen: ((previous, current) {
+        if (previous != current) {
+          needRebuild = true;
+        }
+        return needRebuild;
+      }),
+      builder: (context, state) {
+        debugPrint(
+            'Locale id ${state.localeId}, ${context.locale.toStringWithSeparator()}');
+        debugPrint('Theme id ${state.themeId},');
+        if (needRebuild) {
+          _rebuildAllChildren(context);
+        }
+        return MaterialApp(
+          title: 'News App',
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          debugShowCheckedModeBanner: false,
+          theme:
+              state.themeId == 0 ? ColorsLight.themeData : ColorsDark.themeData,
+          home: Builder(builder: (context) {
+            debugPrint(
+                'Locale id ${state.localeId}, ${context.locale.toStringWithSeparator()}');
+
+            return const AuthPage();
+          }),
+        );
+      },
     );
+
+    // return const MaterialApp(
+    //   title: 'Mail Automation',
+    //   home: AuthPage(),
+    // );
+
     // return BlocBuilder<SettingsCubit, SettingsState>(
     //   buildWhen: ((previous, current) {
     //     if (previous != current) {

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mail_automation/news/view/news_item.dart';
 import 'package:mail_automation/news/widget/news_loader.dart';
 
+import '../../main/home_nav_drawer.dart';
 import '../bloc/news_bloc.dart';
 import '../bloc/news_state.dart';
 
@@ -53,6 +54,7 @@ class _NewsPageState extends State<NewsPage> {
       appBar: AppBar(
         title: const Text('News page'),
       ),
+      drawer: const NavigationDrawer(),
       body: RefreshIndicator(
         onRefresh: _onRefresh,
         child: BlocConsumer<NewsBloc, NewsState>(

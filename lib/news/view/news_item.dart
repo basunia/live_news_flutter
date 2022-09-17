@@ -40,7 +40,7 @@ class NewsItem extends StatelessWidget {
                 )
               : const SizedBox.shrink(),
           Padding(
-            padding: const EdgeInsets.fromLTRB(0.0, 8, 4, 0.0),
+            padding: const EdgeInsets.fromLTRB(0.0, 12, 0, 12.0),
             child: ListTile(
               // leading: Text('${index}'),
               // dense: true,
