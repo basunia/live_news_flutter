@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mail_automation/utils/url_launcher.dart';
 import 'package:mail_tm_api/mail_tm_api.dart';
 
 import '../widget/circular_loader.dart';
@@ -41,13 +43,33 @@ class NewsItem extends StatelessWidget {
               : const SizedBox.shrink(),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 12, 0, 12.0),
-            child: ListTile(
-              // leading: Text('${index}'),
-              // dense: true,
-              title: Text(
-                newsItem.title,
-              ),
-              subtitle: Text(newsItem.description),
+            child: Column(
+              children: [
+                ListTile(
+                  // leading: Text('${index}'),
+                  // dense: true,
+                  title: Text(
+                    newsItem.title,
+                  ),
+                  subtitle: Text(newsItem.description),
+                ),
+                (newsItem.url != null && newsItem.url!.contains('https://'))
+                    ? OutlinedButton(
+                        onPressed: () {
+                          debugPrint('url ${newsItem.url}');
+                          if (newsItem.url != null &&
+                              newsItem.url!.contains('https://')) {
+                            launchWebUrl(newsItem.url!);
+                          }
+                        },
+                        child: const Text(
+                          'detail_news',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400, fontSize: 12.0),
+                        ).tr(),
+                      )
+                    : const SizedBox.shrink(),
+              ],
             ),
             // child: Text(
             //   '$index. ${newsItem.title}',
