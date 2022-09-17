@@ -30,6 +30,7 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
 
   _onLogOutRequested(LogOutRequested event, Emitter<AuthState> emit) {
     clear();
+    emit(state.copyWith(authStatus: AuthStatus.initial));
   }
 
   _onPageChageRequested(PageChangeRequested event, Emitter<AuthState> emit) =>

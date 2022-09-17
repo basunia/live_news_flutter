@@ -33,10 +33,10 @@ class ProfilePage extends StatelessWidget {
                   onPressed: () {
                     context.read<AuthBloc>().add(LogOutRequested());
                     // BlocProvider.of<AuthBloc>(context).add(LogOutRequested());
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AuthPage()));
+                    // Navigator.pushReplacement(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const AuthPage()));
                   },
                   child: const Text('Log out')),
             ],

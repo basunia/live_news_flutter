@@ -19,7 +19,14 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const AuthView();
+    return BlocSelector<AuthBloc, AuthState, AuthStatus>(
+      selector: (state) {
+        return state.authStatus;
+      },
+      builder: (context, state) {
+        return state.isSuccess ? const HomePage() : const AuthView();
+      },
+    );
     // return BlocProvider(
     //   create: (context) =>
     //       AuthBloc(mailRepository: context.read<MailRepository>())
@@ -53,7 +60,7 @@ class AuthView extends StatelessWidget {
           switch (state.authStatus) {
             case AuthStatus.success:
               //TODO: error
-              Navigator.push(context, HomePage.route(context: context));
+              // Navigator.push(context, HomePage.route(context: context));
               break;
             case AuthStatus.failure:
               showMessage(context, 'Something went wrong!');
