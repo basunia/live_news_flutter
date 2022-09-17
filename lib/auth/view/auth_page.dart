@@ -6,6 +6,7 @@ import 'package:mail_automation/auth/view/profile_page.dart';
 import 'package:mail_automation/auth/view/signup_page.dart';
 import 'package:mail_automation/auth/widget/login_loader.dart';
 import 'package:mail_automation/auth/widget/registration_loader.dart';
+import 'package:mail_automation/main/home_page.dart';
 import 'package:mail_automation/utils/toast.dart';
 import 'package:mail_repository/mail_repository.dart';
 
@@ -51,8 +52,8 @@ class AuthView extends StatelessWidget {
         listener: (context, state) {
           switch (state.authStatus) {
             case AuthStatus.success:
-              Navigator.pushReplacement(context,
-                  ProfilePage.route(context: context, profile: state.account));
+              Navigator.pushReplacement(
+                  context, HomePage.route(context: context));
               break;
             case AuthStatus.failure:
               showMessage(context, 'Something went wrong!');
