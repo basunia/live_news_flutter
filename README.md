@@ -16,3 +16,30 @@ It has authentication feature with dynamic domain generation.
 * [Material theme](https://docs.flutter.dev/cookbook/design/themes) with dark and light mode
 * Popular [dio](https://github.com/flutterchina/dio) package for http service
 
+### Installation
+
+If you're new to Flutter the first thing you'll need is to follow the [setup instructions](https://flutter.dev/docs/get-started/install). 
+
+Once Flutter is setup, you can use the latest `stable` channel:
+ * Run `flutter channel stable`
+ * Run `flutter upgrade`
+
+Once you're on `dev` and desktop is enabled, you're ready to run the app:
+* `flutter run -d windows`
+* `flutter run -d macos`
+* `flutter run -d linux`
+* `flutter run -d android`
+* `flutter run -d ios`
+* `flutter run -d web`
+
+If you re-start your IDE, you should also see a new launch option for your current desktop platform.
+
+### Client Keys
+This repo includes a free api for fetching live news. In order to run the app generate an api on your own and replace `baseUrlNews` and in the `base_client.dart` file.
+
+### License
+
+This application is released under the [MIT license](LICENSE.md). You can use the code for any purpose, including commercial projects.
+
+[![license](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
