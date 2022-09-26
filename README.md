@@ -15,5 +15,4 @@ It has authentication feature with dynamic domain generation.
 * [Multi language/locale support](https://docs.flutter.dev/development/accessibility-and-localization/internationalization)
 * [Material theme](https://docs.flutter.dev/cookbook/design/themes) with dark and light mode
 * Popular [dio](https://github.com/flutterchina/dio) package for http service
-* Offline mode
 
