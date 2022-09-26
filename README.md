@@ -24,17 +24,11 @@ Once Flutter is setup, you can use the latest `stable` channel:
  * Run `flutter channel stable`
  * Run `flutter upgrade`
 
-Once you're on `dev` and desktop is enabled, you're ready to run the app:
-* `flutter run -d windows`
-* `flutter run -d macos`
-* `flutter run -d linux`
+Once you're on `master` branch, you're ready to run the app:
 * `flutter run -d android`
 * `flutter run -d ios`
-* `flutter run -d web`
 
-If you re-start your IDE, you should also see a new launch option for your current desktop platform.
-
-### Client Keys
+### API Key
 This repo includes a free api for fetching live news. In order to run the app generate an api on your own and replace `baseUrlNews` in the `base_client.dart` file.
 
 ### License
