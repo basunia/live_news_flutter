@@ -4,7 +4,7 @@ A flutter app the fetches live news from server, store and shows.
 It has authentication feature with dynamic domain generation.
 
 <p align="center">
-<img src="ss/ss_1.jpg" width="200" style="padding-right:50px">  <img src="ss/ss_2.jpg" width="200">  <img src="ss/ss_3.jpg" width="200">  <img src="ss/ss_4.jpg" width="200">
+<img src="ss/ss_1.jpg" width="200" style="margin: 0px 0px 20px 0px;">  <img src="ss/ss_2.jpg" width="200">  <img src="ss/ss_3.jpg" width="200">  <img src="ss/ss_4.jpg" width="200">
 </p>
 
 ### Topics covered
