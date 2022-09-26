@@ -35,7 +35,7 @@ Once you're on `dev` and desktop is enabled, you're ready to run the app:
 If you re-start your IDE, you should also see a new launch option for your current desktop platform.
 
 ### Client Keys
-This repo includes a free api for fetching live news. In order to run the app generate an api on your own and replace `baseUrlNews` and in the `base_client.dart` file.
+This repo includes a free api for fetching live news. In order to run the app generate an api on your own and replace `baseUrlNews` in the `base_client.dart` file.
 
 ### License
 
