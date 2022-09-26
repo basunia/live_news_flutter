@@ -47,10 +47,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 const SizedBox(
                   height: 12.0,
                 ),
-                Text(
-                  'riseup_lab',
-                  style: textTheme.headline6?.copyWith(color: Colors.white),
-                ).tr(),
+                // Text(
+                //   'riseup_lab',
+                //   style: textTheme.headline6?.copyWith(color: Colors.white),
+                // ).tr(),
               ],
             ),
           ),
