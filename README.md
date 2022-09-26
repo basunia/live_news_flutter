@@ -27,6 +27,7 @@ Once Flutter is setup, you can use the latest `stable` channel:
 Once you're on `master` branch, you're ready to run the app:
 * `flutter run -d android`
 * `flutter run -d ios`
+* `flutter run -d web`                                                                                                                                              
 
 ### API Key
 This repo includes a free api for fetching live news. In order to run the app generate an api on your own and replace `baseUrlNews` in the `base_client.dart` file.
