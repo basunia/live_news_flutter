@@ -37,15 +37,15 @@ It has authentication feature with dynamic domain generation.
 Followed separation of concerns in terms of organizing the code.
 Separation of concern brings below benefits:
 
-    * Ease of refactoring
-    * Ease of testing
-    * Reusability of code
+    - Ease of refactoring
+    - Ease of testing
+    - Reusability of code
 
 The first two layers reside in the main app. For the other two layers, two separate packages have been created for.
 ```
-     _main app_ - Application/Feature layer
-     _mail_repository_ - Domain layer
-     _mail_tm_api_  - Data Layer
+     **main app** - Application/Feature layer
+     **mail_repository** - Domain layer
+     mail_tm_api  - Data Layer
 ```                                                                                                                                                                                                                                                                                               
                                                                                                                                                   
                                                                                                                                                   
