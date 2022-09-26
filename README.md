@@ -1,6 +1,6 @@
 # Live News App Flutter
 
-A flutter app the fetches live news from server, store and shows. 
+A flutter app the fetches live news from server, store and shows.<br> 
 It has authentication feature with dynamic domain generation.
 
 <p align="center">
@@ -43,9 +43,9 @@ Separation of concern brings below benefits:
 
 The first two layers reside in the main app. For the other two layers, two separate packages have been created for.
 
-     - **main app** - Application/Feature layer
-     - **mail_repository** - Domain layer
-     - mail_tm_api  - Data Layer                                                                                                                                                                                                                                                                                              
+     1. main app - Application/Feature layer
+     2. mail_repository - Domain layer
+     3. mail_tm_api  - Data Layer                                                                                                                                                                                                                                                                                              
                                                                                                                                                   
                                                                                                                                                   
 ### Installation
