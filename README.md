@@ -42,11 +42,11 @@ Separation of concern brings below benefits:
     * Reusability of code
 
 The first two layers reside in the main app. For the other two layers, two separate packages have been created for.
-
-    * `main app` - Application/Feature layer
-    * `mail_repository` - Domain layer
-    * `mail_tm_api`  - Data Layer
-                                                                                                                                                  
+```
+     _main app_ - Application/Feature layer
+     _mail_repository_ - Domain layer
+     _mail_tm_api_  - Data Layer
+```                                                                                                                                                                                                                                                                                               
                                                                                                                                                   
                                                                                                                                                   
 ### Installation
