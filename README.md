@@ -28,7 +28,7 @@ It has authentication feature with dynamic domain generation.
                                                                                                                                                   
 ### App Architecture summary
 - Used clean architecture for structuring the app.
-- There are four layer in the app
+- There are three layers in the app
 
     * Application/Feature layer (where user interacts, app UI and widget, where bloc resides and handles business logic)
     * Domain layer (where generate business value, aggregate data from data layer and provide data to business layer.
@@ -43,9 +43,9 @@ Separation of concern brings below benefits:
 
 The first two layers reside in the main app. For the other two layers, two separate packages have been created for.
 
-    - `main app` - Application/Feature layer
-    - `mail_repository` - Domain layer
-    - `mail_tm_api`  - Data Layer
+    * `main app` - Application/Feature layer
+    * `mail_repository` - Domain layer
+    * `mail_tm_api`  - Data Layer
                                                                                                                                                   
                                                                                                                                                   
                                                                                                                                                   
