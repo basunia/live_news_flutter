@@ -9,7 +9,7 @@ It has authentication feature with dynamic domain generation.
 
 ### Topics covered
 * Modularizing architechure layer with flutter [package](https://docs.flutter.dev/development/packages-and-plugins/using-packages)
-* [Bloc](https://bloclibrary.dev/#/) library for state management that also enforces to follow [clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+* [Bloc](https://bloclibrary.dev/#/) library for state management and architecting app with [VGV architecture](https://verygood.ventures/blog/very-good-flutter-architecture)
 * [Hydrated bloc/cubit](https://github.com/felangel/bloc/tree/master/packages/hydrated_bloc) for state management with persisted state/data
 * [Google map](https://pub.dev/packages/google_maps_flutter)
 * [Multi language/locale support](https://docs.flutter.dev/development/accessibility-and-localization/internationalization)
